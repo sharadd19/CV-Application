@@ -1,5 +1,5 @@
 import { v4 as uuid4 } from "uuid";
-
+import "../styles/education.css";
 const Education = ({ educations, setEducation }) => {
   // Look through the educations list for the id specified and delete it.
   const handleDeleteEducation = (id) => {
@@ -7,13 +7,13 @@ const Education = ({ educations, setEducation }) => {
       educationsList.filter((education) => education.id !== id)
     );
   };
-  /* const handleInputChange = (id, field, value) => {
-    setEducationInfo((prevEducationInfo) =>
-      prevEducationInfo.map((info) =>
-        info.id === id ? { ...info, [field]: value } : info
+  const handleInputChange = (id, field, value) => {
+    setEducation((educationList) =>
+      educationList.map((education) =>
+        education.id === id ? { ...education, [field]: value } : education
       )
     );
-  }; */
+  };
   const handleAddEducation = () => {
     setEducation((educationList) => [
       ...educationList,
@@ -28,114 +28,114 @@ const Education = ({ educations, setEducation }) => {
     ]);
   };
   return (
-    <div className="educationCard">
+    <div className="card">
       {educations.map(
-        (education, index) => {
+        (education, index) => (
           <div key={education.id} className="education">
-            <h1 className="Education">Education {index + 1}</h1>
+            <div className="educationTitle">
+              <h2 className="education">Education {index + 1}</h2>
+            </div>
+
             <div className="university">
-              <h2>University</h2>
+              <label htmlFor={education.university}>
+                {<strong>University</strong>}
+              </label>
               <input
                 type="text"
                 placeholder="Enter university"
                 id="universityInput"
-                value={education.university}
+                value={education.university || ""}
                 onChange={(e) =>
-                  setEducation({
-                    ...education,
-                    university: e.target.value,
-                  })
+                  handleInputChange(education.id, "university", e.target.value)
                 }
                 required
               />
             </div>
+
             <div className="degree">
-              <h2>Degree</h2>
+              <label htmlFor={education.degree}>
+                {<strong>Degree</strong>}
+              </label>
               <input
                 type="text"
                 placeholder="Enter degree"
                 required
                 value={education.degree}
                 onChange={(e) =>
-                  setEducation({
-                    ...education,
-                    degree: e.target.value,
-                  })
+                  handleInputChange(education.id, "degree", e.target.value)
                 }
               />
             </div>
-            <div className="city">
-              <h2>City</h2>
+            <div className="country">
+              <label htmlFor={education.Country}>{<strong>Country</strong>}</label>
               <input
                 type="text"
-                placeholder="Enter city"
+                placeholder="Enter country"
                 required
-                value={education.city}
+                value={education.country}
                 onChange={(e) =>
-                  setEducation({
-                    ...education,
-                    city: e.target.value,
-                  })
+                  handleInputChange(education.id, "country", e.target.value)
                 }
               />
             </div>
             <div className="startDate">
-              <h2>StartDate</h2>
+              <label htmlFor={education.startDate}>
+                {<strong>Start Date</strong>}
+              </label>
               <input
                 type="month"
                 placeholder="Enter start date"
                 required
                 value={education.startDate}
                 onChange={(e) =>
-                  setEducation({
-                    ...education,
-                    startDate: e.target.value,
-                  })
+                  handleInputChange(education.id, "startDate", e.target.value)
                 }
               />
             </div>
             <div className="endDate">
-              <h2>End Date</h2>
+              <label htmlFor={education.endDate}>
+                {<strong>End Date</strong>}
+              </label>
               <input
                 type="month"
                 placeholder="Enter end date"
                 id="endDateInput"
+                disabled={education.stillAttending}
                 value={education.endDate}
                 onChange={(e) =>
-                  setEducation({
-                    ...education,
-                    endDate: e.target.value,
-                  })
+                  handleInputChange(education.id, "endDate", e.target.value)
                 }
                 required
               />
             </div>
             <div className="stillAttending">
-              <h2>Current Employer</h2>
+              <label htmlFor="Still Attending">
+                {<strong>Still Attending</strong>}
+              </label>{" "}
               <input
                 type="checkbox"
                 id="stillAttendingInput"
-                checked={education.stillAttending}
+                checked={education.stillAttending} 
                 onChange={(e) => {
                   if (e.target.checked) {
-                    setEducation({ ...education, endDate: "" });
+                    handleInputChange(education.id, "endDate", "")
                   }
-                  setEducation({
-                    ...education,
-                    stillAttending: e.target.checked,
-                  });
+                  handleInputChange(education.id, "stillAttending", e.target.checked)
                 }}
                 required
               />
             </div>
-          </div>;
-        },
+          </div>
+        ),
         //Add a delete button
-        <button className="deleteEducation" onClick={() => handleDeleteEducation(id)}>
+        <button
+          className="deleteEducation"
+          onClick={() => handleDeleteEducation(id)}
+        >
           Delete
         </button>
       )}
-      ;
+
       <button className="addEducation" onClick={() => handleAddEducation}>
         Add
       </button>

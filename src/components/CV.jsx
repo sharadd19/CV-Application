@@ -1,4 +1,4 @@
-const Resume = ({ personalInformation, educations, workExperiences }) => {
+const Cv = ({ personalInformation, educations, workExperiences }) => {
   
     const handleDate = (date) => {
     if (date === "") return "";
@@ -23,7 +23,7 @@ const Resume = ({ personalInformation, educations, workExperiences }) => {
       </div>
 
       <div className="education">
-        <h2 className="education"></h2>
+        <h2 className="education">Education</h2>
         <hr></hr>
         {educations.map((education) => {
           <div key={education.id} className="education">
@@ -32,7 +32,7 @@ const Resume = ({ personalInformation, educations, workExperiences }) => {
               <p>{education.degree}</p>
             </div>
             <div className="locationDate">
-              <p>{education.city}</p>
+              <p>{education.country}</p>
               <p>
                 {education.stilAttending} ? `${handleDate(education.startDate)}{" "}
                 - Present` : `${handleDate(education.startDate)} - $
@@ -44,7 +44,7 @@ const Resume = ({ personalInformation, educations, workExperiences }) => {
       </div>
 
       <div className="workExperience">
-        <h2 className="Work Experience"></h2>
+        <h2 className="Work Experience">Work Experience</h2>
         <hr></hr>
         {workExperiences.map((workExperience) => {
           <div key={workExperience.id} className="workExperience">
@@ -55,10 +55,9 @@ const Resume = ({ personalInformation, educations, workExperiences }) => {
             <div className="locationDate">
               <p>{workExperience.city}</p>
               <p>
-                {workExperience.currentEmployer} ? `$
-                {handleDate(workExperience.startDate)} - Present` : `$
-                {handleDate(workExperience.startDate)} - $
-                {handleDate(workExperience.endDate)}`
+              {workExperience.currentEmployer} ? `${handleDate(workExperience.startDate)}{" "}
+                - Present` : `${handleDate(workExperience.startDate)} - $
+                {handleDate(workExperience.endDate)}``
               </p>
             </div>
             <div className="description">
@@ -70,4 +69,4 @@ const Resume = ({ personalInformation, educations, workExperiences }) => {
     </div>
   );
 };
-export default Resume;
+export default Cv;

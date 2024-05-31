@@ -1,21 +1,25 @@
 import { v4 as uuid4 } from "uuid";
-
+import "../styles/workExperience.css"
 const WorkExperience = ({ workExperiences, setWorkExperience }) => {
-  // Look through the workExperiences list for the id specified and delete it.
   
+  // Look through the workExperiences list for the id specified and delete it.
   const handleDeleteWorkExperience = (id) => {
     setWorkExperience((workExperiencesList) =>
       workExperiencesList.filter((workExperience) => workExperience.id !== id)
     );
   };
-  /* const handleInputChange = (id, field, value) => {
-    setWorkExperienceInfo((prevworkExperienceInfo) =>
-      prevworkExperienceInfo.map((info) =>
-        info.id === id ? { ...info, [field]: value } : info
+
+  const handleInputChange = (id, field, value) => {
+    setWorkExperience((workExperienceList) =>
+    workExperienceList.map((workExperience) =>
+        workExperience.id === id ? { ...workExperience, [field]: value } : workExperience
       )
     );
-  }; */
+  };
+
+
   const handleAddWorkExperience = () => {
+    debugger;
     setWorkExperience((workExperienceList) => [
       ...workExperienceList,
       {
@@ -30,130 +34,118 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
     ]);
   };
   return (
-    <div className="workExperienceCard">
+    <div className="card">
       {workExperiences.map(
-        (workExperience, index) => {
-          <div key={workExperience.id} className="workExperience">
-            <h1 className="workExperience"> Work Experience {index + 1}</h1>
+        (workExperience, index) => 
+        <div key={workExperience.id} className="workExperience">
+            
+            <div className="workExperienceTitle">
+              <h2 className="workExperience"> Work Experience {index + 1}</h2>
+            </div>  
+
             <div className="position">
-              <h2>Position</h2>
+            <label htmlFor={workExperience.position}>{<strong>Position</strong>}</label>
               <input
                 type="text"
                 placeholder="Enter position"
                 id="positionInput"
                 value={workExperience.position}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    position: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "position", e.target.value)
                 }
                 required
               />
             </div>
+
             <div className="company">
-              <h2>Company</h2>
+            <label htmlFor={workExperience.company}>{<strong>Company</strong>}</label>
               <input
                 type="text"
                 placeholder="Enter company"
                 required
                 value={workExperience.company}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    company: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "company", e.target.value)
                 }
               />
             </div>
             <div className="city">
-              <h2>City</h2>
+            <label htmlFor={workExperience.city}>{<strong>City</strong>}</label>
               <input
                 type="text"
                 placeholder="Enter city"
                 required
                 value={workExperience.city}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    city: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "city", e.target.value)
                 }
               />
             </div>
             <div className="startDate">
-              <h2>StartDate</h2>
+            <label htmlFor={workExperience.startDate}>{<strong>Start Date</strong>}</label>
               <input
                 type="month"
                 placeholder="Enter start date"
                 required
                 value={workExperience.startDate}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    startDate: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "startDate", e.target.value)
                 }
               />
             </div>
             <div className="endDate">
-              <h2>End Date</h2>
+            <label htmlFor={workExperience.endDate}>{<strong>End Date</strong>}</label>
               <input
                 type="month"
                 placeholder="Enter end date"
                 id="endDateInput"
+                disabled={workExperience.currentEmployer}
                 value={workExperience.endDate}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    endDate: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "endDate", e.target.value)
                 }
                 required
               />
             </div>
+
             <div className="currentEmployer">
-              <h2>Current Employer</h2>
+            <label htmlFor="Current Employer ">{<strong>Current Employer</strong>}</label>
               <input
                 type="checkbox"
                 id="currentEmployerInput"
                 checked={workExperience.currentEmployer}
                 onChange={(e) => {
                   if (e.target.checked) {
-                    setWorkExperience({ ...workExperience, endDate: "" });
+                    handleInputChange(workExperience.id, "endDate", "")
                   }
-                  setWorkExperience({
-                    ...workExperience,
-                    currentEmployer: e.target.checked,
-                  });
+                  handleInputChange(workExperience.id, "currentEmployer", e.target.checked)
                 }}
                 required
               />
             </div>
+
             <div className="description">
-              <h2>Description</h2>
-              <input
-                type="text"
+            <label htmlFor={workExperience.description}>{<strong>Description</strong>}</label>
+              <textarea
+                type="textArea"
                 placeholder="Enter description"
                 id="descriptionInput"
                 value={workExperience.description}
                 onChange={(e) =>
-                  setWorkExperience({
-                    ...workExperience,
-                    description: e.target.value,
-                  })
+                  handleInputChange(workExperience.id, "description", e.target.value)
                 }
                 required
               />
             </div>
-          </div>;
-        },
+          </div>,
+          
+        
         //Add a delete button
         <button className="deleteworkExperience" onClick={() => handleDeleteWorkExperience(id)}>
           Delete
         </button>
       )}
-      ;
+      
       <button className="addworkExperience" onClick={() => handleAddWorkExperience}>
         Add
       </button>

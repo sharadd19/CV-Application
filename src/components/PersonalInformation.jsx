@@ -1,14 +1,18 @@
+
 const PersonalInformation = ({
   personalInformation,
   setPersonalInformation,
 }) => {
   return (
-    <div className="personalInformationCard">
-      <h2>General Information</h2>
+    <div className="card">
+      <div className="personalInformation">
+        <h2>Personal Information</h2>
+      </div>
       <div className="fullName">
-        <h2>Full Name</h2>
+        <label htmlFor={personalInformation.fullName}>{<strong>Full Name</strong>}</label>
         <input
           type="text"
+          maxLength={20}
           placeholder="Enter full name"
           id="fullNameInput"
           value={personalInformation.fullName}
@@ -22,9 +26,10 @@ const PersonalInformation = ({
         />
       </div>
       <div className="email">
-        <h2>Email</h2>
+      <label htmlFor={personalInformation.email}>{<strong>Email</strong>}</label>
         <input
           type="text"
+          maxLength={50}
           placeholder="Enter email"
           required
           value={personalInformation.email}
@@ -37,8 +42,9 @@ const PersonalInformation = ({
         />
       </div>
       <div className="phone">
-        <h2>Phone</h2>
+      <label htmlFor={personalInformation.phone}>{<strong>Phone</strong>}</label>
         <input
+          maxLength={13}
           type="text"
           placeholder="Enter phone number"
           required
@@ -52,9 +58,11 @@ const PersonalInformation = ({
         />
       </div>
       <div className="city">
-        <h2>City</h2>
+      <label htmlFor={personalInformation.city}>{<strong>City</strong>}</label>
+
         <input
           type="text"
+          maxLength={15}
           placeholder="Enter city"
           required
           value={personalInformation.city}

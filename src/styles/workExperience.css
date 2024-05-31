@@ -1,0 +1,10 @@
+#currentEmployerInput { 
+    float: right;
+}
+
+#descriptionInput {
+  resize: vertical;
+  width: 97%;
+  height: 100px;
+  border: 1px solid black;
+}
