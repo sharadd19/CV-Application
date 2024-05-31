@@ -48,7 +48,7 @@ const Education = ({ educations, setEducation }) => {
                 onChange={(e) =>
                   handleInputChange(education.id, "university", e.target.value)
                 }
-                required
+                
               />
             </div>
 
