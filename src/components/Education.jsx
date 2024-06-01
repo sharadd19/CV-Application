@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from "uuid";
 import "../styles/education.css";
-const Education = ({ educations, setEducation }) => {
+const Education = ({ educations, setEducation, showEducation, setShowEducation }) => {
   // Look through the educations list for the id specified and delete it.
   const handleDeleteEducation = (id) => {
     setEducation((educationsList) =>
@@ -29,9 +29,7 @@ const Education = ({ educations, setEducation }) => {
   };
   return (
     <>
-    <div>
-      <h2>Education</h2>
-    </div>
+    
     <div className="card">
       {educations.map((education, index) => (
         <div key={education.id} className="educationCard">
@@ -133,14 +131,14 @@ const Education = ({ educations, setEducation }) => {
           </div>
 
           <button
-            className="deleteEducation"
+            className="deleteButton"
             onClick={() => handleDeleteEducation(education.id)}
           >
             Delete
           </button>
         </div>
       ))}
-      <button className="addEducation" onClick={() => handleAddEducation()}>
+      <button className="addButton" onClick={() => handleAddEducation()}>
         Add
       </button>
     </div>

@@ -4,9 +4,6 @@ const PersonalInformation = ({
 }) => {
   return (
     <>
-      <div className="personalInformation">
-        <h2>Personal Information</h2>
-      </div>
       <div className="card">
         <div className="fullName">
           <label htmlFor={personalInformation.fullName}>

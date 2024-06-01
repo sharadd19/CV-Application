@@ -33,9 +33,6 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
   };
   return (
     <>
-      <div className="workExperienceTitle">
-        <h2>Work Experience</h2>
-      </div>
       <div className="card">
         {workExperiences.map((workExperience, index) => (
           <div key={workExperience.id} className="workExperienceCard">
@@ -52,9 +49,12 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
                 placeholder="Enter position"
                 id="positionInput"
                 value={workExperience.position}
-                onChange={
-                  (e) =>
-                  handleInputChange(workExperience.id, "position", e.target.value)
+                onChange={(e) =>
+                  handleInputChange(
+                    workExperience.id,
+                    "position",
+                    e.target.value
+                  )
                 }
                 required
               />
@@ -174,7 +174,7 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
             </div>
             <div className="buttonGroup">
               <button
-                className="deleteworkExperience"
+                className="deleteButton"
                 onClick={(e) => {
                   handleDeleteWorkExperience(workExperience.id);
                 }}
@@ -184,10 +184,7 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
             </div>
           </div>
         ))}
-        <button
-          className="addworkExperience"
-          onClick={() => handleAddWorkExperience()}
-        >
+        <button className="addButton" onClick={() => handleAddWorkExperience()}>
           Add
         </button>
       </div>
