@@ -1,7 +1,7 @@
 const Cv = ({ personalInformation, educations, workExperiences }) => {
   const handleDate = (date) => {
     if (date === "") return "";
-
+  
     let [year, month] = date.split("-");
     let newDate = new Date(year, month - 1);
 

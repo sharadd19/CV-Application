@@ -16,12 +16,12 @@
   border: 1px soid purple;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding-top: 1rem;
 }
 
 .cvContainer{
-  
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   background-color: white;

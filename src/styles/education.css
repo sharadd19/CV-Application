@@ -1,3 +1,14 @@
 #stillAttendingInput { 
     float: right;
 }
+
+.educationCard {
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  background-color: rgb(0,0,0,0.1);
+  padding: 1rem;
+  border-radius: 5px;
+}

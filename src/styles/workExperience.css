@@ -8,3 +8,15 @@
   height: 100px;
   border: 1px solid black;
 }
+
+.workExperienceCard {
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+    background-color: rgb(0,0,0,0.1);
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  
