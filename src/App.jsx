@@ -73,7 +73,7 @@ function App() {
       </div>
       <div className="wrapper">
         <div className="mainContainer">
-          <button className="download" onClick={downloadCv}>
+          <button disabled className="download" onClick={downloadCv}>
             Download
           </button>
 
