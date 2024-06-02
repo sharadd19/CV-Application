@@ -21,7 +21,7 @@ const WorkExperience = ({ workExperiences, setWorkExperience }) => {
     setWorkExperience((workExperienceList) => [
       ...workExperienceList,
       {
-        id: uuid4,
+        id: uuid4(),
         position: "",
         company: "",
         city: "",

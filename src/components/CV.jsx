@@ -15,7 +15,7 @@ const Cv = ({ personalInformation, educations, workExperiences }) => {
   return (
     <div className="cv">
       <div className="header">
-        <h1 className="fullName">{personalInformation.fullName}</h1>
+        <h1 className="fullName">{personalInformation.fullName.toUpperCase()}</h1>
         <p>
           {personalInformation.email} | {personalInformation.phone} |{" "}
           {personalInformation.city}

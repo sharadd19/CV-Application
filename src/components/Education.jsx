@@ -19,7 +19,7 @@ const Education = ({ educations, setEducation }) => {
     setEducation((educationList) => [
       ...educationList,
       {
-        id: uuid4,
+        id: uuid4(),
         university: "",
         degree: "",
         country: "",
