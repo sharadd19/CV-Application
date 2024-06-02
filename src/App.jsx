@@ -99,7 +99,9 @@ function App() {
           <div className="educationInput">
             <div>
               <button className="toggle" onClick={toggleEducation}>
-                <h2>Education&nbsp;{<span>{showEducation ? "▲" : "▼"}</span>}</h2>
+                <h2>
+                  Education&nbsp;{<span>{showEducation ? "▲" : "▼"}</span>}
+                </h2>
               </button>
             </div>
             {showEducation && (
@@ -116,7 +118,8 @@ function App() {
             <div>
               <button className="toggle" onClick={toggleWorkExperience}>
                 <h2>
-                  Work Experience&nbsp;{<span>{showWorkExperience ? "▲" : "▼"}</span>}
+                  Work Experience&nbsp;
+                  {<span>{showWorkExperience ? "▲" : "▼"}</span>}
                 </h2>
               </button>
             </div>

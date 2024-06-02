@@ -1,6 +1,6 @@
 import { v4 as uuid4 } from "uuid";
 import "../styles/education.css";
-const Education = ({ educations, setEducation, showEducation, setShowEducation }) => {
+const Education = ({ educations, setEducation }) => {
   // Look through the educations list for the id specified and delete it.
   const handleDeleteEducation = (id) => {
     setEducation((educationsList) =>
@@ -13,6 +13,7 @@ const Education = ({ educations, setEducation, showEducation, setShowEducation }
         education.id === id ? { ...education, [field]: value } : education
       )
     );
+    
   };
   const handleAddEducation = () => {
     setEducation((educationList) => [
@@ -24,6 +25,7 @@ const Education = ({ educations, setEducation, showEducation, setShowEducation }
         country: "",
         startDate: "",
         endDate: "",
+        stillAttending: false,
       },
     ]);
   };
@@ -48,6 +50,7 @@ const Education = ({ educations, setEducation, showEducation, setShowEducation }
               value={education.university || ""}
               onChange={(e) =>
                 handleInputChange(education.id, "university", e.target.value)
+                
               }
             />
           </div>
@@ -117,6 +120,7 @@ const Education = ({ educations, setEducation, showEducation, setShowEducation }
               id="stillAttendingInput"
               checked={education.stillAttending}
               onChange={(e) => {
+                
                 if (e.target.checked) {
                   handleInputChange(education.id, "endDate", "");
                 }

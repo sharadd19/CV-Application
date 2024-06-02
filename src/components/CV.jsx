@@ -1,3 +1,4 @@
+import "../styles/cv.css"
 const Cv = ({ personalInformation, educations, workExperiences }) => {
   const handleDate = (date) => {
     if (date === "") return "";
@@ -21,18 +22,18 @@ const Cv = ({ personalInformation, educations, workExperiences }) => {
         </p>
       </div>
 
-      <div className="education">
+      <div className="educationSection">
         <h2 className="education">Education</h2>
         <hr></hr>
         {educations.map((education) => (
-          <div key={education.id} className="education">
+          <div key={education.id} className="educationElement">
             <div className="universityDegree">
-              <p>{education.university}</p>
-              <p>{education.degree}</p>
+              <p style={{ fontWeight: "bold"}} className="university">{education.university}</p>
+              <p style={{ fontStyle: "italic"}}>{education.degree}</p>
             </div>
             <div className="locationDate">
               <p>{education.country}</p>
-              <p>
+              <p style={{ fontStyle: "italic"}}>
                 {education.stilAttending 
                 ? `${handleDate(education.startDate)} - Present` 
                 : `${handleDate(education.startDate)} - ${handleDate(education.endDate)}`}
@@ -42,26 +43,29 @@ const Cv = ({ personalInformation, educations, workExperiences }) => {
         ))}
       </div>
 
-      <div className="workExperience">
+      <div className="workExperienceSection">
         <h2 className="Work Experience">Work Experience</h2>
         <hr></hr>
         {workExperiences.map((workExperience) => (
-          <div key={workExperience.id} className="workExperience">
-            <div className="positionCompany">
-              <p>{workExperience.position}</p>
-              <p>{workExperience.company}</p>
-            </div>
-            <div className="locationDate">
-              <p>{workExperience.city}</p>
-              <p>
-                {workExperience.currentEmployer
-                ? `${handleDate(workExperience.startDate)} - Present` 
-                : `${handleDate(workExperience.startDate)} - ${handleDate(workExperience.endDate)}`}
-              </p>
+          <div>
+            <div key={workExperience.id} className="workExperienceElement">
+              <div className="positionCompany">
+                <p style={{ fontWeight: "bold"}}>{workExperience.position}</p>
+                <p style={{ fontStyle: "italic"}}>{workExperience.company}</p>
+              </div>
+              <div className="locationDate">
+                <p>{workExperience.city}</p>
+                <p style={{ fontStyle: "italic"}}>
+                  {workExperience.currentEmployer
+                  ? `${handleDate(workExperience.startDate)} - Present`
+                  : `${handleDate(workExperience.startDate)} - ${handleDate(workExperience.endDate)}`}
+                </p>
+              </div>
+            
             </div>
             <div className="description">
-              <p>{workExperience.description}</p>
-            </div>
+            <p>{workExperience.description}</p>
+                    </div>
           </div>
         ))}
       </div>
